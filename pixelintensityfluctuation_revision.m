@@ -534,7 +534,7 @@ end
 % xlim([0.5 5.9])
 % set(gca,'XTick',[1 1.4 2 2.4 3 3.4 4 4.4 5 5.4],'XTickLabel',label)
 
-% Violin Plot
+%% Violin Plot
 % ON = Parallel; OFF = Perpendicular 
 % Initialize the data values cell matrix 
 data_vals = cell(10,1); 
@@ -579,8 +579,9 @@ plot_settings.linetype = {'-'};
 % Change the y axis label 
 plot_settings.ylabel = 'Magnitude (AU)'; 
 % Change the x axis label 
-plot_settings.xlabel = {'Distance away from bead center (\mu m)',...
-    'and parallel or perpendicular to axis of oscillation'}; 
+plot_settings.xlabel = {'Distance away from bead center (\mu m)'...
+    %,'and parallel or perpendicular to axis of oscillation'
+    }; 
 % Set the font sizes to be 12
 plot_settings.font_size = 12; 
 plot_settings.xlabelsize = 12; 
@@ -593,24 +594,6 @@ plot_settings.linewidth = 0.5;
 ax = figure; 
 [cond_des, main_output, secondary_output, type] = ...
     plotViolinCell(data_vals, plot_settings); 
-% 
-figure; 
-min = 0; maxvalues = 1; maxcount = 1; 
-for k = 1:length(data_vals)
-    subplot(5,2,k); 
-    h = histogram(data_vals{k,1}); title(num2str(k)); 
-    maxvalues = max(maxvalues, max(data_vals{k,1})); 
-    maxcount = max(maxcount, max(h.Values)); 
-end 
-
-
-figure; 
-for k = 1:length(data_vals)
-    subplot(5,2,k); 
-    histogram(data_vals{k,1}); title(num2str(k)); 
-    xlim([0,maxvalues]); ylim([0,maxcount]); 
-end 
-
 %% figure 8
 % gradient
 clear
